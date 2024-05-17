@@ -1,6 +1,7 @@
 package ru.job4j.tracker.oop;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.oop.Point;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
