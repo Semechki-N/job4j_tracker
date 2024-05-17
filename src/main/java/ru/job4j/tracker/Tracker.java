@@ -37,21 +37,31 @@ public class Tracker {
         Item[] result = new Item[items.length];
         int count = 0;
         for (int i = 0; i < size; i++) {
-        Item item = items[i];
-        if (item.getName().equals(key)) {
-            result[count] = item;
-            count++;
+            Item item = items[i];
+            if (item.getName().equals(key)) {
+                result[count] = item;
+                count++;
+            }
         }
-        } return Arrays.copyOf(result, count);
+        return Arrays.copyOf(result, count);
     }
 
     public boolean replace(int id, Item item) {
-    if (indexOf(id) != -1) {
-        int result = indexOf(id);
-        item.setId(id);
-        items[result] = item;
-        return true;
+        if (indexOf(id) != -1) {
+            int result = indexOf(id);
+            item.setId(id);
+            items[result] = item;
+            return true;
+        }
+        return false;
     }
-    return false;
+
+    public void delete(int id) {
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
+            items[size - 1] = null;
+            size--;
+        }
     }
 }
